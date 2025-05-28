@@ -1,0 +1,34 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Hashmap {
+    public static void main(String[] args) {
+        HashMap<Integer, String> studentMap = new HashMap<>();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter student ID and name pairs (type '0' as ID to stop):");
+        while (true) 
+        {
+            System.out.print("Enter student ID: ");
+            int id = sc.nextInt();
+            sc.nextLine();  
+            if (id == 0) 
+            break;
+            System.out.print("Enter student name: ");
+            String name = sc.nextLine();
+            studentMap.put(id, name);
+        }
+
+        System.out.print("Enter an ID to retrieve the student's name: ");
+        int searchId = sc.nextInt();
+
+        if (studentMap.containsKey(searchId)) 
+        {
+            System.out.println("Student Name: " + studentMap.get(searchId));
+        } 
+        else 
+        {
+            System.out.println("No student found with ID " + searchId);
+        }
+        sc.close();
+    }
+}
