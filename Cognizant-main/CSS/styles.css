@@ -1,0 +1,189 @@
+/* Header styles */
+#mainHeader {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px;
+}
+
+/* Event card styles */
+.eventCard {
+  background-color: white;
+  margin: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+}
+
+/* Style for main CTA button */
+.cta-button {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Reset all elements */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style all h2 elements */
+h2 {
+  font-size: 28px;
+  color: #333;
+}
+
+/* ID selector for main header */
+#mainHeader {
+  background-color: #004080;
+  color: #fff;
+  padding: 10px;
+}
+
+/* Class selector for event cards */
+.eventCard {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+/* Group selector */
+h3, p {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* Use HEX and RGBA */
+body {
+  background-color: #e6f2ff; /* HEX fallback */
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(230, 242, 255, 0.9); /* fallback rgba */
+}
+
+/* Gradient header */
+section h2 {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  color: white;
+  padding: 10px;
+}
+
+/* Body font */
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+/* Description text */
+.description {
+  text-align: justify;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* Link states */
+a:link {
+  color: blue;
+}
+a:visited {
+  color: purple;
+}
+a:hover {
+  color: red;
+  text-decoration: underline;
+}
+a:active {
+  color: green;
+}
+
+/* Navigation list styling */
+nav ul {
+  list-style-type: none;
+  list-style-position: inside;
+  padding: 0;
+}
+
+nav li {
+  padding: 10px;
+  margin: 5px 0;
+}
+
+/* Table styling */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+/* Zebra striping */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Box model on card */
+.eventCard {
+  margin: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+}
+
+/* Outline for selected fields */
+input:focus {
+  outline: 2px dashed #007BFF;
+}
+
+/* Hidden vs None */
+.hidden {
+  visibility: hidden;
+}
+
+.not-displayed {
+  display: none;
+}
+
+.article {
+  column-count: 2;
+  column-gap: 30px;
+  column-rule: 1px solid gray;
+}
+
+
+/* Responsive styles for small screens */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .eventCard {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+/* Bonus: Flexbox layout */
+nav ul {
+  display: flex;
+  justify-content: space-around;
+}

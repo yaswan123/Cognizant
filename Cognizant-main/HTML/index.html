@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Local Community Event Portal</title>
+  <style>
+    /* Exercise 3 - Internal CSS */
+    #welcomeBanner {
+      background-color: lightblue;
+      padding: 10px;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: green;
+    }
+
+    /* Exercise 4 - Image borders */
+    .gallery-img {
+      width: 150px;
+      border: 2px solid #333;
+      padding: 5px;
+    }
+
+    /* Exercise 5 - Form styling */
+    form {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f3f3f3;
+    }
+  </style>
+  <script>
+    // Exercise 5 - Output on form submit
+    function showConfirmation(e) {
+      e.preventDefault();
+      document.getElementById('confirmation').innerText = "Registration Successful!";
+    }
+
+    // Exercise 6 - Event handling
+    function validatePhone(input) {
+      if (!/^\d{10}$/.test(input.value)) alert("Enter 10-digit phone number");
+    }
+
+    function showFee(select) {
+      document.getElementById('fee').innerText = select.value === 'Run' ? '$10' : 'Free';
+    }
+
+    function countChars(textarea) {
+      document.getElementById('charCount').innerText = textarea.value.length;
+    }
+
+    // Exercise 7 - oncanplay
+    function videoReady() {
+      document.getElementById('videoMsg').innerText = "Video ready to play";
+    }
+
+    // Exercise 7 - onbeforeunload
+    window.onbeforeunload = function () {
+      return "Are you sure you want to leave? Your form may not be saved.";
+    };
+
+    // Exercise 8 - Preferences
+    function savePreference(sel) {
+      localStorage.setItem('preferredEvent', sel.value);
+    }
+
+    function clearPreferences() {
+      localStorage.clear();
+      sessionStorage.clear();
+      alert("Preferences Cleared");
+    }
+
+    window.onload = function () {
+      const saved = localStorage.getItem('preferredEvent');
+      if (saved) document.getElementById('preferredEventType').value = saved;
+    }
+
+    // Exercise 9 - Geolocation
+    function findEvents() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          pos => {
+            document.getElementById('location').innerText =
+              `Lat: ${pos.coords.latitude}, Lon: ${pos.coords.longitude}`;
+          },
+          err => {
+            document.getElementById('location').innerText = "Error: " + err.message;
+          },
+          { enableHighAccuracy: true, timeout: 5000 }
+        );
+      } else {
+        alert("Geolocation not supported.");
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">Home</a> |
+    <a href="#events">Events</a> |
+    <a href="#contact">Contact</a> |
+    <a href="help.html" target="_blank">Help</a>
+  </nav>
+
+  <!-- Welcome Banner -->
+  <div id="welcomeBanner">
+    Welcome, <span style="color: red; font-weight: bold;">Special Offer!</span>
+  </div>
+  <p class="highlight">Don't miss our summer events!</p>
+
+  <!-- Main Sections -->
+  <main>
+
+    <!-- Home -->
+    <section id="home">
+      <h2>Home</h2>
+      <p>Welcome to the Local Community Event Portal.</p>
+    </section>
+
+    <!-- Events -->
+    <section id="events">
+      <h2>Events</h2>
+
+      <!-- Image Gallery -->
+      <table>
+        <caption>Past Events</caption>
+        <tr>
+          <td><img src="event1.jpg" alt="Event 1" title="Spring Fair" class="gallery-img"></td>
+          <td><img src="event2.jpg" alt="Event 2" title="Charity Run" class="gallery-img"></td>
+          <td><img src="event3.jpg" alt="Event 3" title="Food Fest" class="gallery-img"></td>
+        </tr>
+        <tr>
+          <td><img src="event4.jpg" alt="Event 4" title="Art Show" class="gallery-img"></td>
+          <td><img src="event5.jpg" alt="Event 5" title="Clean-up Drive" class="gallery-img"></td>
+          <td><img src="event6.jpg" alt="Event 6" title="Talent Show" class="gallery-img"></td>
+        </tr>
+      </table>
+
+      <!-- Registration Form -->
+      <form onsubmit="showConfirmation(event)">
+        <input type="text" name="name" placeholder="Name" required autofocus><br><br>
+        <input type="email" name="email" placeholder="Email" required><br><br>
+        <input type="date" name="eventDate" required><br><br>
+        <select name="eventType" id="preferredEventType" onchange="savePreference(this)" required>
+          <option value="">Select Event</option>
+          <option value="Fair">Fair</option>
+          <option value="Run">Run</option>
+        </select><br><br>
+        <textarea name="message" placeholder="Message"></textarea><br><br>
+        <button type="submit">Register</button>
+        <output id="confirmation" style="display:block; margin-top: 10px;"></output>
+      </form>
+
+      <!-- Video Invite -->
+      <h3>Watch our Promo Video:</h3>
+      <video width="320" height="240" controls oncanplay="videoReady()">
+        <source src="promo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p id="videoMsg"></p>
+
+      <!-- Clear Preferences -->
+      <button onclick="clearPreferences()">Clear Preferences</button>
+
+      <!-- Geolocation -->
+      <h3>Find Events Near You</h3>
+      <button onclick="findEvents()">Find Nearby Events</button>
+      <p id="location"></p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact Us</h2>
+
+      <!-- Feedback Form with Events -->
+      <form>
+        Phone: <input type="text" onblur="validatePhone(this)"><br><br>
+        Event Type:
+        <select onchange="showFee(this)">
+          <option>Fair</option>
+          <option>Run</option>
+        </select><br><br>
+        Fee: <span id="fee"></span><br><br>
+        <button type="button" onclick="alert('Thank you!')">Submit</button><br><br>
+        Feedback:<br>
+        <textarea onkeyup="countChars(this)"></textarea><br>
+        Characters: <span id="charCount">0</span>
+      </form>
+
+      <!-- Double-click Image -->
+      <h3>Double-click to enlarge:</h3>
+      <img src="event.jpg" alt="Event" width="150" ondblclick="this.style.width='300px'">
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 City Council | Developed by Community Web Team</p>
+  </footer>
+
+  <!-- Exercise 10 - Console Debugging -->
+  <script>
+    console.log("Page loaded");
+    let a = 5, b = 10;
+    console.log("Sum:", a + b);
+  </script>
+</body>
+</html>

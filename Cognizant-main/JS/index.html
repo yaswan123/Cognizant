@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Local Community Event Portal</title>
+  <style>
+    /* Internal CSS for styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    nav a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: #333;
+    }
+    #welcomeBanner {
+      background-color: #add8e6;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+    .highlight {
+      background-color: yellow;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    td {
+      text-align: center;
+      padding: 10px;
+    }
+    .event-image {
+      width: 100px;
+      height: auto;
+      border: 2px solid #000;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    .error {
+      color: red;
+    }
+    #videoMessage {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#events">Events</a>
+    <a href="#contact">Contact</a>
+    <a href="help.html" target="_blank">Help</a>
+  </nav>
+
+  <!-- Welcome Banner -->
+  <div id="welcomeBanner">
+    <h1>Welcome, Resident!</h1>
+    <p>Don't miss our upcoming events. <span style="color: red; font-weight: bold;">Special Offer!</span></p>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Events Section -->
+    <section id="events">
+      <h2 class="highlight">Community Events</h2>
+      <!-- Image Gallery -->
+      <table>
+        <caption>Past Community Events</caption>
+        <tr>
+          <td><img src="event1.jpg" alt="Event 1" title="Music Fest" class="event-image" ondblclick="enlargeImage(this)"></td>
+          <td><img src="event2.jpg" alt="Event 2" title="Art Exhibition" class="event-image" ondblclick="enlargeImage(this)"></td>
+          <td><img src="event3.jpg" alt="Event 3" title="Food Carnival" class="event-image" ondblclick="enlargeImage(this)"></td>
+        </tr>
+        <tr>
+          <td><img src="event4.jpg" alt="Event 4" title="Tech Talk" class="event-image" ondblclick="enlargeImage(this)"></td>
+          <td><img src="event5.jpg" alt="Event 5" title="Marathon" class="event-image" ondblclick="enlargeImage(this)"></td>
+          <td><img src="event6.jpg" alt="Event 6" title="Book Fair" class="event-image" ondblclick="enlargeImage(this)"></td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- Registration Form -->
+    <section id="registration">
+      <h2 class="highlight">Event Registration</h2>
+      <form id="registrationForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required autofocus><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required><br><br>
+
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" placeholder="Your Phone Number"><br><br>
+
+        <label for="eventDate">Event Date:</label>
+        <input type="date" id="eventDate" name="eventDate" required><br><br>
+
+        <label for="eventType">Event Type:</label>
+        <select id="eventType" name="eventType" required>
+          <option value="">Select an event</option>
+          <option value="music">Music</option>
+          <option value="art">Art</option>
+          <option value="food">Food</option>
+          <option value="tech">Tech</option>
+          <option value="sports">Sports</option>
+          <option value="literature">Literature</option>
+        </select><br><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" placeholder="Your message..." rows="4" cols="50"></textarea><br>
+        <span id="charCount">0</span> characters<br><br>
+
+        <button type="submit">Register</button>
+      </form>
+      <output id="confirmationMessage"></output><br><br>
+      <button onclick="clearPreferences()">Clear Preferences</button>
+    </section>
+
+    <!-- Video Invite -->
+    <section id="videoInvite">
+      <h2 class="highlight">Event Promo Video</h2>
+      <video id="promoVideo" width="320" height="240" controls oncanplay="videoReady()">
+        <source src="promo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p id="videoMessage"></p>
+    </section>
+
+    <!-- Geolocation -->
+    <section id="geolocation">
+      <h2 class="highlight">Find Nearby Events</h2>
+      <button onclick="findNearbyEvents()">Find Nearby Events</button>
+      <p id="locationInfo"></p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Local Community Council</p>
+  </footer>
+
+  <!-- Link to External JavaScript -->
+  <script src="main.js"></script>
+</body>
+</html>

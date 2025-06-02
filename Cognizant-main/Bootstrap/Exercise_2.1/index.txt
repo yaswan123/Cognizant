@@ -1,0 +1,5 @@
+css/: Contains Bootstrap’s compiled CSS files.
+
+js/: Contains Bootstrap’s JavaScript (including Bootstrap.bundle.js which includes Popper).
+
+icons/: If included, this folder will have SVG icon files (used with Bootstr
